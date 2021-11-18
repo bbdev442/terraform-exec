@@ -12,6 +12,8 @@ import (
 func (tf *Terraform) runTerraformCmd(ctx context.Context, cmd *exec.Cmd) error {
 	var errBuf strings.Builder
 
+	tf.logger.Printf("Running linux command")
+
 	cmd.Stdout = mergeWriters(cmd.Stdout, tf.stdout)
 	cmd.Stderr = mergeWriters(cmd.Stderr, tf.stderr, &errBuf)
 
